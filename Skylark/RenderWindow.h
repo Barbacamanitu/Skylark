@@ -25,5 +25,8 @@ private:
 	SDL_Event windowEvent;
 	bool mIsOpen;
 
+	int otherfunc();
+	float* theVertices;
+	
 };
 

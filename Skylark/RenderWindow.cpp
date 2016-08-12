@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "RenderWindow.h"
-
+#include "GLHelpers/FileIO.h"
 
 RenderWindow::RenderWindow()
 {
@@ -22,8 +22,15 @@ void RenderWindow::HandleEvents()
 			Close();
 		};
 	}
-
 	SDL_GL_SwapWindow(sdlWindow);
+	glEnableVertexAttribArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 1);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, theVertices);
+	// Draw the triangle !
+	glDrawArrays(GL_TRIANGLES, 0, 3); // Starting from vertex 0; 3 vertices total -> 1 triangle
+	glDisableVertexAttribArray(0);
+	
+	
 }
 
 
@@ -40,6 +47,73 @@ void RenderWindow::Close()
 
 void RenderWindow::DrawTriangle()
 {
+
+	float vertices[] = {
+		0.0f,  0.5f, // Vertex 1 (X, Y)
+		0.5f, -0.5f, // Vertex 2 (X, Y)
+		-0.5f, -0.5f  // Vertex 3 (X, Y)
+	};
+
+	theVertices = vertices;
+
+	GLuint vbo;
+	glGenBuffers(1, &vbo); // Generate 1 buffer
+
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+	GLenum err = GL_NO_ERROR;
+	err = glGetError();
+	std::string vertexSource = FileIO::readFile("Shaders\\vertexShader.gl");
+	std::string fragSource = FileIO::readFile("Shaders\\fragmentShader.gl");
+
+	const GLchar* vSource = (const GLchar*)vertexSource.c_str();
+	const GLchar* fSource = (const GLchar*)fragSource.c_str();
+	
+	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(vertexShader, 1, &vSource, NULL);
+	err = glGetError();
+	glCompileShader(vertexShader);
+	err = glGetError();
+	GLint status;
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &status);
+	err = glGetError();
+	if (status != GL_TRUE)
+	{
+		char buffer[512];
+		glGetShaderInfoLog(vertexShader, 512, NULL, buffer);	
+	}
+	err = glGetError();
+
+
+	GLuint fragShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(fragShader, 1, &fSource, NULL);
+	glCompileShader(fragShader);
+	glGetShaderiv(fragShader, GL_COMPILE_STATUS, &status);
+
+	if (status != GL_TRUE)
+	{
+		char buffer[512];
+		glGetShaderInfoLog(vertexShader, 512, NULL, buffer);	
+	}
+
+	GLuint shaderProgram = glCreateProgram();
+	glAttachShader(shaderProgram, vertexShader);
+	glAttachShader(shaderProgram, fragShader);
+	glBindFragDataLocation(shaderProgram, 0, "outColor");
+	glLinkProgram(shaderProgram);
+	err = glGetError();
+
+	glUseProgram(shaderProgram);
+
+	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
+	err = glGetError();
+	glEnableVertexAttribArray(posAttrib);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	err = glGetError();
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
+	err = glGetError();
+	
 
 }
 
@@ -67,10 +141,7 @@ void RenderWindow::Initialize()
 		glewExperimental = GL_TRUE;
 		glewInit();
 
-		GLuint vertexBuffer;
-		glGenBuffers(1, &vertexBuffer);
-
-		printf("%u\n", vertexBuffer);
+		
 	}
 	
 }
@@ -84,3 +155,4 @@ void RenderWindow::Destroy()
 	
 	SDL_Quit();
 }
+

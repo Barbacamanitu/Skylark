@@ -6,14 +6,25 @@
 
 int main(int argc, char *argv[])
 {
-	RenderWindow rWindow;
-	rWindow.Initialize();
 
-	while (rWindow.isOpen())
-	{
-		rWindow.HandleEvents();
-	}
 	
+
+	RenderWindow* rWindow = new RenderWindow();
+	rWindow->Initialize();
+	rWindow->DrawTriangle();
+
+	
+
+
+	
+
+	while (rWindow->isOpen())
+	{
+		rWindow->HandleEvents();
+	}
+
+	
+
 	return 0;
 }
 
