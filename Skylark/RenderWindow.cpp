@@ -81,6 +81,7 @@ void RenderWindow::DrawTriangle()
 	{
 		char buffer[512];
 		glGetShaderInfoLog(vertexShader, 512, NULL, buffer);	
+		throw std::exception(buffer);
 	}
 	err = glGetError();
 

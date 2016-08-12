@@ -1,10 +1,11 @@
 #pragma once
+#include <string>
 class Shader
 {
 public:
 	Shader();
 	~Shader();
-	void loadFromFile(const char* filename);
+	void loadFromFile(const std::string filename);
 	void compile();
 };
 
