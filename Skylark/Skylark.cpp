@@ -2,15 +2,18 @@
 //
 
 #include "stdafx.h"
-#include <SDL.h>
+#include "RenderWindow.h"
 
 int main(int argc, char *argv[])
 {
-	SDL_Init(SDL_INIT_EVERYTHING);
+	RenderWindow rWindow;
+	rWindow.Initialize();
 
-	SDL_Delay(1000);
-
-	SDL_Quit();
+	while (rWindow.isOpen())
+	{
+		rWindow.HandleEvents();
+	}
+	
 	return 0;
 }
 
