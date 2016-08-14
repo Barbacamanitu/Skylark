@@ -58,7 +58,6 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="LibraryDirectories.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -155,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLHelpers\FileIO.h" />
+    <ClInclude Include="GLHelpers\VertexShader.h" />
     <ClInclude Include="RenderWindow.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stdafx.h" />
@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GLHelpers\FileIO.cpp" />
+    <ClCompile Include="GLHelpers\VertexShader.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Skylark.cpp" />
@@ -173,7 +174,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="LibraryDirectories.props" />
     <None Include="Shaders\fragmentShader.gl" />
     <None Include="Shaders\triangle.fragment" />
     <None Include="Shaders\triangle.vertex" />
