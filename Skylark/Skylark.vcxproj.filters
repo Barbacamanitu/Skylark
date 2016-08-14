@@ -52,6 +52,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="LibrarieDirectories.props" />
+    <None Include="LibraryDirectories.props" />
+    <None Include="Shaders\fragmentShader.gl" />
+    <None Include="Shaders\triangle.fragment" />
+    <None Include="Shaders\triangle.vertex" />
+    <None Include="Shaders\vertexShader.gl" />
   </ItemGroup>
 </Project>

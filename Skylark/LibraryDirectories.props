@@ -2,9 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <GlmRoot>Z:\Dev\Lib\glm</GlmRoot>
-    <GlewRoot>Z:\Dev\Lib\glew-2.0.0</GlewRoot>
-    <SdlRoot>Z:\Dev\Lib\SDL2-2.0.4</SdlRoot>
+    <GlmRoot>C:\Users\Earl\Desktop\fluff\lib\glm-0.9.7.6</GlmRoot>
+    <GlewRoot>C:\Users\Earl\Desktop\fluff\lib\glew-2.0.0-win32\glew-2.0.0</GlewRoot>
+    <SdlRoot>C:\Users\Earl\Desktop\fluff\lib\SDL2-devel-2.0.4-VC\SDL2-2.0.4</SdlRoot>
   </PropertyGroup>
   <PropertyGroup />
   <ItemDefinitionGroup />
