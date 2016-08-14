@@ -3,7 +3,7 @@
 class FileIO
 {
 public:
-	static std::string readFile(const char* filename);
+	static std::string readFile(const std::string filename);
 	FileIO();
 	~FileIO();
 };

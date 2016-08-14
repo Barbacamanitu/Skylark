@@ -3,7 +3,7 @@
 #include <fstream>
 
 
-std::string FileIO::readFile(const char* filename)
+std::string FileIO::readFile(const std::string filename)
 {
 	std::ifstream infile(filename);
 	std::string str((std::istreambuf_iterator<char>(infile)),

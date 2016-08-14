@@ -30,10 +30,10 @@
     <ClInclude Include="GLHelpers\FileIO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GLHelpers\VertexShader.h">
+    <ClInclude Include="GLHelpers\Shader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GLHelpers\Shader.h">
+    <ClInclude Include="GLHelpers\ShaderProgram.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,10 +50,10 @@
     <ClCompile Include="GLHelpers\FileIO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GLHelpers\VertexShader.cpp">
+    <ClCompile Include="GLHelpers\Shader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GLHelpers\Shader.cpp">
+    <ClCompile Include="GLHelpers\ShaderProgram.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

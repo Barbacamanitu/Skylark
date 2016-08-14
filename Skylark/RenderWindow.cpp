@@ -2,6 +2,9 @@
 #include "RenderWindow.h"
 #include "GLHelpers/FileIO.h"
 
+#include "GLHelpers/Shader.h"
+#include "GLHelpers/ShaderProgram.h"
+
 RenderWindow::RenderWindow()
 {
 	mIsOpen = false;
@@ -66,49 +69,29 @@ void RenderWindow::DrawTriangle()
 	std::string vertexSource = FileIO::readFile("Shaders\\vertexShader.gl");
 	std::string fragSource = FileIO::readFile("Shaders\\fragmentShader.gl");
 
-	const GLchar* vSource = (const GLchar*)vertexSource.c_str();
-	const GLchar* fSource = (const GLchar*)fragSource.c_str();
 	
-	GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &vSource, NULL);
-	err = glGetError();
-	glCompileShader(vertexShader);
-	err = glGetError();
-	GLint status;
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &status);
-	err = glGetError();
-	if (status != GL_TRUE)
+	try
 	{
-		char buffer[512];
-		glGetShaderInfoLog(vertexShader, 512, NULL, buffer);	
-		throw std::exception(buffer);
+	////NEW SHADER STUFF
+		Shader vert;
+		Shader frag;
+		
+		vert.createFromFile("Shaders\\vertexShader.gl",ShaderType::Vertex);
+		frag.createFromFile("Shaders\\fragmentShader.gl", ShaderType::Fragment);
+		sProg = new ShaderProgram();
+		sProg->AttachShader(&vert);
+		sProg->AttachShader(&frag);
+		sProg->Link();
 	}
-	err = glGetError();
-
-
-	GLuint fragShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragShader, 1, &fSource, NULL);
-	glCompileShader(fragShader);
-	glGetShaderiv(fragShader, GL_COMPILE_STATUS, &status);
-
-	if (status != GL_TRUE)
+	catch (std::exception ex)
 	{
-		char buffer[512];
-		glGetShaderInfoLog(vertexShader, 512, NULL, buffer);	
+		int a = 1;
 	}
-
-	GLuint shaderProgram = glCreateProgram();
-	glAttachShader(shaderProgram, vertexShader);
-	glAttachShader(shaderProgram, fragShader);
-	glBindFragDataLocation(shaderProgram, 0, "outColor");
-	glLinkProgram(shaderProgram);
-	err = glGetError();
-
-	glUseProgram(shaderProgram);
+	sProg->Use();
 	GLuint vao;
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
-	GLint posAttrib = glGetAttribLocation(shaderProgram, "position");
+	GLint posAttrib = glGetAttribLocation(sProg->getId() , "position");
 	glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	err = glGetError();
 	glEnableVertexAttribArray(posAttrib);

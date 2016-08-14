@@ -2,6 +2,7 @@
 #include <GL/glew.h>
 #include <SDL.h>
 #include <SDL_opengl.h>
+#include "GLHelpers/ShaderProgram.h"
 
 class RenderWindow
 {
@@ -27,6 +28,8 @@ private:
 
 	int otherfunc();
 	float* theVertices;
+
+	ShaderProgram* sProg;
 	
 };
 

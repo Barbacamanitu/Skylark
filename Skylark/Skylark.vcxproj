@@ -154,17 +154,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GLHelpers\FileIO.h" />
-    <ClInclude Include="GLHelpers\VertexShader.h" />
     <ClInclude Include="RenderWindow.h" />
     <ClInclude Include="GLHelpers\Shader.h" />
+    <ClInclude Include="GLHelpers\ShaderProgram.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GLHelpers\FileIO.cpp" />
-    <ClCompile Include="GLHelpers\VertexShader.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
     <ClCompile Include="GLHelpers\Shader.cpp" />
+    <ClCompile Include="GLHelpers\ShaderProgram.cpp" />
     <ClCompile Include="Skylark.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
