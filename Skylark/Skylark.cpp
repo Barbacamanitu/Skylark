@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "RenderWindow.h"
+#include <string>
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +16,7 @@ int main(int argc, char *argv[])
 
 	
 
-
+	std::string e = "earl sucks dicks";
 	
 
 	while (rWindow->isOpen())

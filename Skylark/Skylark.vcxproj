@@ -58,7 +58,6 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="LibraryDirectories.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -173,7 +172,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="LibraryDirectories.props" />
     <None Include="Shaders\fragmentShader.gl" />
     <None Include="Shaders\triangle.fragment" />
     <None Include="Shaders\triangle.vertex" />
