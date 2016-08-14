@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    <GlmRoot>Z:\Dev\Lib\glm</GlmRoot>
+    <GlewRoot>Z:\Dev\Lib\glew-2.0.0</GlewRoot>
+    <SdlRoot>Z:\Dev\Lib\SDL2-2.0.4</SdlRoot>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <BuildMacro Include="GlmRoot">
+      <Value>$(GlmRoot)</Value>
+    </BuildMacro>
+    <BuildMacro Include="GlewRoot">
+      <Value>$(GlewRoot)</Value>
+    </BuildMacro>
+    <BuildMacro Include="SdlRoot">
+      <Value>$(SdlRoot)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
