@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 	
 
 	std::string e = "earl sucks dicks";
-	
+	std::string r = "russ sux diks";
 
 	while (rWindow->isOpen())
 	{
